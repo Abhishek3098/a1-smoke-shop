@@ -102,7 +102,7 @@
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased pb-16 sm:pb-0 relative selection:bg-emerald-500 selection:text-white transition-colors duration-300">
 
     <!-- 21+ Age Verification Modal -->
-    <div id="age-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-md hidden transition-opacity duration-300">
+    <div id="age-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-md hidden transition-opacity duration-300">
         <div class="glass p-8 rounded-2xl max-w-md w-full mx-4 text-center border-t-4 border-t-amber-500 shadow-2xl dark:shadow-slate-900/50">
             <i class="fa-solid fa-triangle-exclamation text-amber-500 text-5xl mb-4"></i>
             <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Age Verification</h2>
@@ -118,20 +118,39 @@
         </div>
     </div>
 
+    <!-- Mobile Slide-out Menu -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col pt-20 px-8 border-l border-slate-200 dark:border-slate-800 shadow-2xl">
+        <button id="close-menu-btn" class="absolute top-6 right-6 w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark text-2xl"></i>
+        </button>
+        <nav class="flex flex-col space-y-8 mt-12 text-2xl font-bold text-center">
+            <a href="#about" class="mobile-link text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About</a>
+            <a href="#products" class="mobile-link text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Products</a>
+            <a href="#reviews" class="mobile-link text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Reviews</a>
+            <a href="#location" class="mobile-link text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Location</a>
+        </nav>
+        <div class="mt-auto mb-16 flex justify-center">
+            <a href="tel:9094406329" class="glass px-8 py-4 rounded-xl text-emerald-600 dark:text-emerald-400 font-bold hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-all border border-emerald-500/20 dark:border-emerald-500/30 flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i>
+                Call Store
+            </a>
+        </div>
+    </div>
+
     <!-- Sticky Header -->
     <header class="sticky top-0 z-40 w-full glass border-b-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Brand -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+                    <a href="#" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
                         <i class="fa-solid fa-fire-flame-curved text-amber-500"></i>
                         A1 SMOKE SHOP
                     </a>
                 </div>
                 
                 <!-- Right Side UI -->
-                <div class="flex items-center gap-4 lg:gap-8">
+                <div class="flex items-center gap-3 lg:gap-8">
                     <!-- Desktop Nav -->
                     <nav class="hidden md:flex space-x-8">
                         <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">About</a>
@@ -148,9 +167,14 @@
                         </a>
                     </div>
 
-                    <!-- Theme Toggle (Visible everywhere) -->
+                    <!-- Theme Toggle -->
                     <button id="theme-toggle" class="w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-600 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-slate-300 dark:border-slate-700" aria-label="Toggle Dark Mode">
                         <i id="theme-icon" class="fa-solid fa-moon text-lg transition-transform duration-300"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors border border-slate-300 dark:border-slate-700" aria-label="Open Menu">
+                        <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
@@ -475,12 +499,10 @@
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
 
-            // Function to update icon based on current theme
             const updateThemeIcon = () => {
                 if (document.documentElement.classList.contains('dark')) {
                     themeIcon.classList.remove('fa-moon');
                     themeIcon.classList.add('fa-sun');
-                    // Add slight rotation effect on change
                     themeIcon.style.transform = 'rotate(360deg)';
                 } else {
                     themeIcon.classList.remove('fa-sun');
@@ -489,13 +511,11 @@
                 }
             };
 
-            // Set initial icon
             updateThemeIcon();
 
             themeToggleBtn.addEventListener('click', () => {
                 document.documentElement.classList.toggle('dark');
                 
-                // Save preference to localStorage
                 if (document.documentElement.classList.contains('dark')) {
                     localStorage.setItem('theme', 'dark');
                 } else {
@@ -505,13 +525,38 @@
                 updateThemeIcon();
             });
 
+            // --- Mobile Menu Logic ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            const openMenu = () => {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            };
+
+            const closeMenu = () => {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = ''; // Restore scrolling
+            };
+
+            mobileMenuBtn.addEventListener('click', openMenu);
+            closeMenuBtn.addEventListener('click', closeMenu);
+
+            // Close menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
 
             // --- Age Verification Modal Logic ---
             const modal = document.getElementById('age-modal');
             const btnYes = document.getElementById('btn-yes');
             const btnNo = document.getElementById('btn-no');
 
-            // Show modal on load unless previously verified in session
             if (!sessionStorage.getItem('ageVerified')) {
                 setTimeout(() => {
                     modal.classList.remove('hidden');
