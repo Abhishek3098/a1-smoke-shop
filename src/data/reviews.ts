@@ -1,0 +1,58 @@
+import { CustomerReview } from '@/types';
+
+export const REVIEWS_DATA: CustomerReview[] = [
+  {
+    id: '1',
+    author: 'Google Reviewer',
+    role: 'Verified Customer',
+    content: 'Best prices for glass in the area. Great service as well, always feel like family.',
+    rating: 5,
+    initials: 'G',
+    avatarColor: 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400',
+  },
+  {
+    id: '2',
+    author: 'Local Guide',
+    role: 'Google Local Guide',
+    content: 'Great place and excelente servic and best price in town.',
+    rating: 5,
+    initials: 'L',
+    avatarColor: 'bg-amber-500/20 text-amber-600 dark:text-amber-400',
+  },
+  {
+    id: '3',
+    author: 'Customer',
+    role: 'Regular Shopper',
+    content: 'Great variety of products and awesome customer service everytime!',
+    rating: 5,
+    initials: 'C',
+    avatarColor: 'bg-blue-500/20 text-blue-600 dark:text-blue-400',
+  },
+  {
+    id: '4',
+    author: 'I_AM',
+    role: 'Fontana Resident',
+    content: 'I always get great customer service from Jay, he makes sure you leave completely satisfied.',
+    rating: 5,
+    initials: 'IA',
+    avatarColor: 'bg-purple-500/20 text-purple-600 dark:text-purple-400',
+  },
+  {
+    id: '5',
+    author: 'Jonni Gurl',
+    role: 'Verified Buyer',
+    content: '"How are you my friend," is the first thing you hear when you walk in. Love this place!',
+    rating: 5,
+    initials: 'JG',
+    avatarColor: 'bg-pink-500/20 text-pink-600 dark:text-pink-400',
+  },
+  {
+    id: '6',
+    author: 'Javier Del Toro',
+    role: 'Verified Buyer',
+    content: 'Best prices in vapes and cigarettes, friendly owners 👍🏻😉',
+    rating: 5,
+    initials: 'JD',
+    avatarColor: 'bg-indigo-500/20 text-indigo-600 dark:text-indigo-400',
+  },
+];
