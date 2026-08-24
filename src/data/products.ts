@@ -1,0 +1,58 @@
+import { ProductItem } from '@/types';
+
+export const PRODUCTS_DATA: ProductItem[] = [
+  {
+    id: 'glassware',
+    title: 'Glassware & Water Pipes',
+    category: 'glass',
+    description: 'High-quality hand pipes, water pipes, beakers, bubblers, and dab rigs from premier brands to local California glassblowers.',
+    icon: 'Flame',
+    popularBrands: ['RooR', 'GRAV', 'Empire Glassworks', 'Puffco', 'MJ Arsenal', 'Local Blowers'],
+    featured: true,
+  },
+  {
+    id: 'vapes',
+    title: 'Disposable Vapes & E-Juice',
+    category: 'vapes',
+    description: 'The latest high-puff disposable devices, pod systems, replacement coils, and a massive selection of premium freebase and salt nic e-liquids.',
+    icon: 'Wind',
+    popularBrands: ['Geek Bar Pulse', 'Lost Mary', 'Raz', 'Spaceman', 'Naked 100', 'Juice Head', 'SMOK'],
+    featured: true,
+  },
+  {
+    id: 'cigars',
+    title: 'Premium Cigars & Cigarettes',
+    category: 'cigars',
+    description: 'Fresh stock of top cigarette brands and a temperature-controlled humidor featuring premium handcrafted cigars, cigarillos, and blunt wraps.',
+    icon: 'Cigarette',
+    popularBrands: ['Arturo Fuente', 'Romeo y Julieta', 'Cohiba', 'Backwoods', 'Dutch Masters', 'Marlboro', 'American Spirit'],
+    featured: true,
+  },
+  {
+    id: 'hookah',
+    title: 'Hookah & Shisha',
+    category: 'hookah',
+    description: 'Complete modern and traditional hookah sets, coconut charcoal, burner stoves, hoses, bowls, and all your favorite premium shisha tobacco flavors.',
+    icon: 'Sparkles',
+    popularBrands: ['Al Fakher', 'Starbuzz', 'Fumari', 'Tangiers', 'CocoUrth', 'Khalil Mamoon'],
+    featured: true,
+  },
+  {
+    id: 'accessories',
+    title: 'Smoking Accessories',
+    category: 'accessories',
+    description: 'Precision 4-piece grinders, rolling papers, pre-rolled cones, rolling trays, digital scales, torch lighters, butane, and odor eliminator sprays.',
+    icon: 'Layers',
+    popularBrands: ['RAW', 'Elements', 'Santa Cruz Shredder', 'Clipper', 'Vector', 'Smoke Buddy', 'OCB'],
+    featured: true,
+  },
+  {
+    id: 'specialty',
+    title: 'Specialty Goods & Detox',
+    category: 'specialty',
+    description: 'Aromatic incense, herbal detox cleansers, test kits, premium lab-tested kratom, full-spectrum CBD products, and exclusive specialty imports.',
+    icon: 'Gem',
+    popularBrands: ['OPMS Kratom', 'Kush Herbal', 'Wildberry Incense', 'Quick Fix', 'High Voltage Detox', 'CBDfx'],
+    featured: true,
+  },
+];
